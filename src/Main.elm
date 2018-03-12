@@ -3,6 +3,7 @@ module Main exposing (..)
 import Html
 import Html.Styled exposing (..)
 import MdButtons.MdButtons as MdButton exposing (..)
+import MdIcon exposing (..)
 import Css exposing (..)
 import Css.Colors exposing (..)
 
@@ -38,7 +39,7 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    MdButton.button [ MdButton.flat, MdButton.disabled ] [] [ text "button" ] 
+    MdButton.button [ MdButton.icon ] [] [ MdIcon.icon [] [] [ text "face" ] ]
 
 
 

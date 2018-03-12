@@ -12,27 +12,32 @@ defaultFont =
      batch 
         [ fontSize (px 14)
         , fontFamilies [ "Roboto", "sans-serif" ]
+        , fontWeight (int 600)
         ]    
 
 
 light : Style 
 light =
-    color black
+    batch
+        [ color black
+        , hover [ property "filter" "brightness(95%)" ]
+        , active [ property "filter" "brightness(90%)" ]
+        ]
 
 
 dark : Style 
 dark =
-    color white
+    batch
+        [ color white
+        , hover [ property "filter" "brightness(105%)" ]
+        , active [ property "filter" "brightness(110%)" ]
+        ]
 
 
 flat : Style 
 flat = 
     batch
         [ backgroundColor transparent
-        , hover
-            [ backgroundColor (rgba 0 0 0 0.05) ]
-        , active 
-            [ backgroundColor (rgba 0 0 0 0.12) ]
         , border (px 0)
         , boxShadow2 (px 0) (px 0)
         ]
@@ -43,18 +48,28 @@ raised =
     batch
         [ backgroundColor (rgba 158 158 158 0.2)
         , boxShadow
-        , active [ backgroundColor (rgba 0 0 0 0.12) ]
         ]
 
 
 disabled : Style 
 disabled = 
     batch 
-        [ color (rgba 0 0 0 0.26)
-        , Css.boxShadow none
+        [ Css.boxShadow none
         , cursor default
         , property "pointer-events" "none"
         , touchAction none
+        , property "filter" "contrast(0%)"
+        ]
+
+
+icon : Style
+icon =
+    batch
+        [ borderRadius (pct 50)
+        , height (px 32)
+        , minWidth (px 32)
+        , padding (px 0)
+        , overflow hidden
         ]
 
 
@@ -79,6 +94,7 @@ button userStyles =
             , cursor pointer
             , color (hex "000")
             , outline none
+            , position relative
             , raised
             , light
             ]
