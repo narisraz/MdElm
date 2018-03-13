@@ -41,11 +41,10 @@ update msg model =
 view : Model -> Html Msg
 view model =
     MdButton.button 
-        [ 
+        [ MdButton.flat red
         ] 
-        [] 
-        [ MdIcon.icon [] [] [ text "add" ] 
-        ]
+        []
+        [ text "Ok"]
 
 
 

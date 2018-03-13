@@ -19,27 +19,57 @@ defaultFont =
 light : Style 
 light =
     batch
-        [ color black
-        , hover [ property "filter" "brightness(95%)" ]
-        , active [ property "filter" "brightness(90%)" ]
-        ]
-
-
-dark : Style 
-dark =
-    batch
         [ color white
         , hover [ property "filter" "brightness(105%)" ]
         , active [ property "filter" "brightness(110%)" ]
         ]
 
 
-flat : Style 
-flat = 
+
+dark : Style 
+dark =
+    batch
+        [ color black
+        , hover [ property "filter" "brightness(95%)" ]
+        , active [ property "filter" "brightness(90%)" ]
+        ]
+
+
+flat : ColorValue a -> Style
+flat userColor =
     batch
         [ backgroundColor transparent
         , border (px 0)
         , boxShadow2 (px 0) (px 0)
+        , color userColor
+        , display inlineBlock
+        , overflow hidden
+        , hover
+            [ before
+                [ property "content" "\"\""
+                , display block
+                , position absolute
+                , left (pct -50)
+                , zIndex (int -1)
+                , width (pct 500)
+                , height (pct 100)
+                , backgroundColor userColor
+                , opacity (num 0.15)
+                ]
+            ]
+        , active
+            [ before
+                [ property "content" "\"\""
+                , display block
+                , position absolute
+                , left (pct -50)
+                , zIndex (int -1)
+                , width (pct 500)
+                , height (pct 100)
+                , backgroundColor userColor
+                , opacity (num 0.20)
+                ]
+             ]
         ]
 
 
@@ -58,7 +88,8 @@ disabled =
         , cursor default
         , property "pointer-events" "none"
         , touchAction none
-        , opacity (num 0.5)
+        , backgroundColor (rgba 0 0 0 0.12)
+        , color (rgba 0 0 0 0.26)
         ]
 
 
@@ -66,8 +97,8 @@ icon : Style
 icon =
     batch
         [ borderRadius (pct 50)
-        , height (px 36)
-        , width (px 36)
+        , height (px 56)
+        , width (px 56)
         , minWidth (px 32)
         , padding (px 0)
         , overflow hidden
@@ -85,6 +116,7 @@ button userStyles =
         (List.append 
             [ textTransform uppercase
             , defaultFont
+            , position relative
             , height (px 36)
             , minWidth (px 64)
             , borderRadius (px 2)
@@ -98,6 +130,5 @@ button userStyles =
             , raised
             , light
             ]
-            userStyles 
+            userStyles
         )
-
