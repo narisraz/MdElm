@@ -46,31 +46,30 @@ flat userColor =
         , overflow hidden
         , hover
             [ before
-                [ property "content" "\"\""
-                , display block
-                , position absolute
-                , left (pct -50)
-                , zIndex (int -1)
-                , width (pct 500)
-                , height (pct 100)
-                , backgroundColor userColor
+                [ onMouseEvents
                 , opacity (num 0.15)
                 ]
             ]
         , active
             [ before
-                [ property "content" "\"\""
-                , display block
-                , position absolute
-                , left (pct -50)
-                , zIndex (int -1)
-                , width (pct 500)
-                , height (pct 100)
-                , backgroundColor userColor
+                [ onMouseEvents
                 , opacity (num 0.20)
                 ]
              ]
         ]
+
+
+onMouseEvents : List Style
+onMouseEvents =
+    [ property "content" "\"\""
+    , display block
+    , position absolute
+    , left (pct -50)
+    , zIndex (int -1)
+    , width (pct 500)
+    , height (pct 100)
+    , backgroundColor userColor
+    ]
 
 
 raised : Style 
