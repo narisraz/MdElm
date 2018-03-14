@@ -58,7 +58,7 @@ disabled =
         , cursor default
         , property "pointer-events" "none"
         , touchAction none
-        , property "filter" "contrast(0%)"
+        , opacity (num 0.5)
         ]
 
 
@@ -66,7 +66,8 @@ icon : Style
 icon =
     batch
         [ borderRadius (pct 50)
-        , height (px 32)
+        , height (px 36)
+        , width (px 36)
         , minWidth (px 32)
         , padding (px 0)
         , overflow hidden
@@ -94,7 +95,6 @@ button userStyles =
             , cursor pointer
             , color (hex "000")
             , outline none
-            , position relative
             , raised
             , light
             ]

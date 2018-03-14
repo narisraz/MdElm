@@ -2,6 +2,7 @@ module Main exposing (..)
 
 import Html
 import Html.Styled exposing (..)
+import Html.Styled.Attributes as Attributes exposing(..)
 import MdButtons.MdButtons as MdButton exposing (..)
 import MdIcon exposing (..)
 import Css exposing (..)
@@ -39,7 +40,12 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    MdButton.button [ MdButton.icon ] [] [ MdIcon.icon [] [] [ text "face" ] ]
+    MdButton.button 
+        [ 
+        ] 
+        [] 
+        [ MdIcon.icon [] [] [ text "add" ] 
+        ]
 
 
 
